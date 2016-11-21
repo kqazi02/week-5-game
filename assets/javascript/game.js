@@ -113,6 +113,9 @@ $(document).ready(function(){
 	//Dynamically creates a start button and renders it on the screen.
 	function startPage(){
 
+		//division added for styling purposes
+		var startDiv = $("<div>");
+		startDiv.addClass("startDiv");
 		var startButton = $("<button>");
 		startButton.addClass("startButton");
 		startButton.html("Let's get goin'!");
@@ -122,8 +125,16 @@ $(document).ready(function(){
 			//displays the question from the questions object on the screen
 			nextQuestion();
 		});
+		//adding image div for styling purpose
+		var imageDiv = $("<div>");
+		imageDiv.addClass("imageDiv");
+		var startImg = $("<img>");
+		startImg.attr({"src":"assets/images/greetings.jpg", "alt":"Greeting from Texas",})
+		imageDiv.html(startImg);
+		$(".gameplay").append(imageDiv);
 		// pushing the button onto the page
-		$(".gameplay").html(startButton);
+		startDiv.html(startButton);
+		$(".gameplay").append(startDiv);
 	} //startPage function ends here
 
 	//displays the next question in an array;
@@ -226,11 +237,12 @@ $(document).ready(function(){
 
 		//Display the graphic associated with the question
 		var imageDiv = $("<div>");
+		imageDiv.addClass("imageDiv");
 		var displayImg = $("<img>");
 		displayImg.addClass("displayPic");
 		var source = questions[count].graphic;
 		var caption = questions[count].caption;
-		displayImg.attr({"src": source, "alt": caption});
+		displayImg.attr({"src": source, "alt": caption,});
 		imageDiv.html(displayImg);
 
 		$(".gameplay").append(correctAnswer);
@@ -253,11 +265,12 @@ $(document).ready(function(){
 
 		//Display the graphic associated with the question
 		var imageDiv = $("<div>");
+		imageDiv.addClass("imageDiv");
 		var displayImg = $("<img>");
 		displayImg.addClass("displayPic");
 		var source = questions[count].graphic;
 		var caption = questions[count].caption;
-		displayImg.attr({"src": source, "alt": caption});
+		displayImg.attr({"src": source, "alt": caption,});
 		imageDiv.html(displayImg);
 
 		$(".gameplay").append(whatHappened);
@@ -290,11 +303,12 @@ $(document).ready(function(){
 
 		//Display the graphic associated with the question.
 		var imageDiv = $("<div>");
+		imageDiv.addClass("imageDiv");
 		var displayImg = $("<img>");
 		displayImg.addClass("displayPic");
 		var source = questions[count].graphic;
 		var caption = questions[count].caption;
-		displayImg.attr({"src": source, "alt": caption});
+		displayImg.attr({"src": source, "alt": caption,});
 		imageDiv.html(displayImg);
 
 		$(".gameplay").append(correctAnswer);
@@ -316,20 +330,22 @@ $(document).ready(function(){
 		pageHeading.attr("id", "pageHeading");
 		pageHeading.html("Results");
 		var correctDiv = $("<div>");
-		correctDiv.addClass("result");
+		correctDiv.addClass("finalResult");
 		correctDiv.html("Questions answered correctly: " + correct);
 		var incorrectDiv = $("<div>");
-		incorrectDiv.addClass("result");
+		incorrectDiv.addClass("finalResult");
 		incorrectDiv.html("Questions answered incorrectly: " + incorrect);
 		var unansweredDiv = $("<div>");
-		unansweredDiv.addClass("result");
+		unansweredDiv.addClass("finalResult");
 		unansweredDiv.html("Questions not answered: " + unanswered);
 
 		//create a button to offer an option of restarting the game from the beginning.
+		var startoverDiv = $("<div>");
+		startoverDiv.addClass("startDiv");
 		var startoverButton = $("<button>");
 		startoverButton.addClass("startButton");
-		startoverButton.html("Give it another go?");
-		
+		startoverButton.html("Wanna give it another go?");
+		startoverDiv.html(startoverButton);
 		startoverButton.on("click", function(){
 			reset();
 			nextQuestion();
@@ -339,7 +355,7 @@ $(document).ready(function(){
 		$(".gameplay").append(correctDiv);
 		$(".gameplay").append(incorrectDiv);
 		$(".gameplay").append(unansweredDiv);
-		$(".gameplay").append(startoverButton);
+		$(".gameplay").append(startoverDiv);
 
 	}
 
